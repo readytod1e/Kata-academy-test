@@ -5,8 +5,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
-        Scanner in = new Scanner(System.in);
+    public static String calc(String example) throws Exception {
         int result=0;
         int i=0;
         int elemMass=0;
@@ -25,8 +24,6 @@ public class Main {
         }
         int  []A = { 1, 4, 5, 9, 10, 40, 50, 90, 100};
         String []R = {"I","IV","V","IX","X","XL","L","XC","C"};
-
-        String example = in.nextLine();
         int summIndex = example.indexOf("+");
         int subtractionIndex = example.indexOf("-");
         int multiplicationIndex = example.indexOf("*");
@@ -37,7 +34,6 @@ public class Main {
             String token = tokenizer.nextToken();
             try {
                 numbers[elemMass]=Integer.parseInt(token);
-                System.out.println(+numbers[elemMass]);
                 elemMass++;
             }
             catch (NumberFormatException e) {
@@ -65,7 +61,6 @@ public class Main {
                     throw new Exception ("Ошибка!");
                 }
                 result = numbers[0]+numbers[1];
-                System.out.println("Ответ: " + result);
             }
             else {
                 if (k==1){
@@ -85,7 +80,6 @@ public class Main {
                     result -= A[d];
 
                 }
-                System.out.println("Ответ: " + answer);
             }
         }
         else if (subtractionIndex!=-1){
@@ -94,7 +88,6 @@ public class Main {
                     throw new Exception ("Ошибка!");
                 }
                 result = numbers[0]-numbers[1];
-                System.out.println("Ответ: " + result);
             }
             else {
                 if (k==1){
@@ -117,7 +110,6 @@ public class Main {
                     throw new Exception ("Ошибка!");
                 }
 
-                System.out.println("Ответ: " + answer);
             }
 
         }
@@ -128,7 +120,6 @@ public class Main {
                 }
 
                 result = numbers[0]*numbers[1];
-                System.out.println("Ответ: " + result);
             }
             else {
                 if (k==1){
@@ -151,7 +142,6 @@ public class Main {
                 if (answer==""){
                     throw new Exception ("Ошибка!");
                 }
-                System.out.println("Ответ: " + answer);
             }
         }
         else if (divisionIndex!=-1){
@@ -161,7 +151,6 @@ public class Main {
                 }
 
                 result = numbers[0]/numbers[1];
-                System.out.println("Ответ: " + result);
             }
             else {
                 if (k==1){
@@ -184,12 +173,19 @@ public class Main {
                 if (answer==""){
                     throw new Exception ("Ошибка!");
                 }
-                System.out.println("Ответ: " + answer);
             }
         }
 
+        if (k==0){
+            return Integer.toString(result);
+        }
+        else return answer;
+    }
+    public static void main(String[] args) throws Exception {
 
-
+        Scanner in = new Scanner(System.in);
+        String example = in.nextLine();
+        System.out.println(calc(example));
     }
 
 }
